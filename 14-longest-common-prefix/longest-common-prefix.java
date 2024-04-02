@@ -1,6 +1,6 @@
 // time complexity : O(n logn n) | space complexity : O(1)
-class Solution {
-    public String longestCommonPrefix(String[] strs) {
+// class Solution {
+//     public String longestCommonPrefix(String[] strs) {
 
         // StringBuilder longPrefix = new StringBuilder();
 
@@ -24,6 +24,8 @@ class Solution {
 
         // ***************************************************
 
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
         String longPrefix = strs[0];
         for(int i=0;i<strs.length;i++){
             while (strs[i].indexOf(longPrefix)!=0){
