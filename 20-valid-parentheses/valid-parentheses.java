@@ -1,3 +1,4 @@
+// Timecomplexity : O[s] | Space complexity: O[s]  where s is length of stack
 class Solution {
     public boolean isValid(String s) {
         if(s==null || s.length() == 0){
