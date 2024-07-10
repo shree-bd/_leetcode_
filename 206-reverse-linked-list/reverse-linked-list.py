@@ -5,15 +5,30 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        stack = []
         curr = head
+        prev = None
+
         while curr:
-            stack.append(curr.val)
-            curr = curr.next
-        curr = head
-        while curr:
-            curr.val = stack.pop()
-            curr = curr.next
-        return head
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        return prev
+
+
+
+
+
+
+        # stack = []
+        # curr = head
+        # while curr:
+        #     stack.append(curr.val)
+        #     curr = curr.next
+        # curr = head
+        # while curr:
+        #     curr.val = stack.pop()
+        #     curr = curr.next
+        # return head
 
         
