@@ -1,12 +1,12 @@
 class Solution:
     def maximumScore(self, nums: List[int], k: int) -> int:
-        n = len(nums)
+        # Initialize variables
         res = nums[k]
         cur_min = nums[k]
-        
         left = right = k
         
-        while left >= 0 and right < n:
+        # Expand both to the left and right
+        while left >= 0 and right < len(nums):
             # Update the minimum value in the current subarray
             cur_min = min(cur_min, nums[left], nums[right])
             
@@ -16,8 +16,10 @@ class Solution:
             # Update the result
             res = max(res, score)
             
-            # Expand the boundaries
-            if left > 0 and (right == n - 1 or nums[left - 1] >= nums[right + 1]):
+            # Determine where to expand
+            if left == 0 and right == len(nums) - 1:
+                break
+            if left > 0 and (right == len(nums) - 1 or nums[left - 1] >= nums[right + 1]):
                 left -= 1
             else:
                 right += 1
