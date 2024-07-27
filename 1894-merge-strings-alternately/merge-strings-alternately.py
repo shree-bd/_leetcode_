@@ -11,17 +11,17 @@ class Solution:
             merged.append(word2[j])
             i+=1
             j+=1
-        merged.append(word1[i:])
-        merged.append(word2[j:])
-        # # Append remaining letters fro word1 if any
-        # while i < len(word1):
-        #     merged.append(word1[i])
-        #     i+=1
+        # merged.append(word1[i:])
+        # merged.append(word2[j:])
+        # Append remaining letters fro word1 if any
+        while i < len(word1):
+            merged.append(word1[i])
+            i+=1
 
-        # # Append remaining letters fro word1 if any
-        # while j < len(word2):
-        #     merged.append(word2[j])
-        #     j+=1
+        # Append remaining letters fro word1 if any
+        while j < len(word2):
+            merged.append(word2[j])
+            j+=1
         return "".join(merged)
 
         
