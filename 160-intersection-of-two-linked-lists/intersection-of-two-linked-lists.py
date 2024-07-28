@@ -12,7 +12,6 @@ class Solution:
         lengthA, lengthB = 0,0
         currA, currB = headA, headB
 
-
         while currA != None:
             lengthA += 1
             currA = currA.next
@@ -39,12 +38,4 @@ class Solution:
         
         return None
             
-
-
-
-        if currA.next.val == currB.next.val:
-            return currA.next.val
-
-        
-
         
