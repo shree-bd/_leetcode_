@@ -1,6 +1,8 @@
-# Write your MySQL query statement below
-SELECT name as Department, Employee, Salary
-FROM (select d.name, E.NAME AS Employee, Salary,
-dense_rank() over (partition by d.name order by salary desc) as rnk
-FROM EMPLOYEE e join department d ON e.departmentId = d.id) as ranked
-WHERE rnk=1
+SELECT Department, Employee, Salary
+FROM (
+    SELECT d.name AS Department, e.NAME AS Employee, e.Salary,
+           DENSE_RANK() OVER (PARTITION BY d.name ORDER BY e.Salary DESC) AS rnk
+    FROM EMPLOYEE e
+    JOIN department d ON e.departmentId = d.id
+) AS ranked
+WHERE rnk = 1;
