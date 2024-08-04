@@ -1,7 +1,7 @@
 SELECT Department, Employee, Salary
 FROM (
     SELECT d.name AS Department, e.NAME AS Employee, e.Salary,
-           DENSE_RANK() OVER (PARTITION BY d.name ORDER BY e.Salary DESC) AS rnk
+           RANK() OVER (PARTITION BY d.name ORDER BY e.Salary DESC) AS rnk
     FROM EMPLOYEE e
     JOIN department d ON e.departmentId = d.id
 ) AS ranked
