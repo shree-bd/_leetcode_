@@ -1,3 +1,41 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        result = set()
+
+        for i, num in enumerate(nums):
+            if i > 0 and num == nums[i - 1] or num > 0: continue 
+
+            target = -nums[i]
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                value = nums[l] + nums[r]
+                if value == target:
+                    result.add((num, nums[l], nums[r]))
+                    l += 1
+                elif value > target:
+                    r -= 1
+                else:
+                    l += 1
+        return list(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # class Solution:
 #     def threeSum(self, nums: List[int]) -> List[List[int]]:
 #         nums.sort()  # Sort the array to make it easier to avoid duplicates and use two-pointer technique
@@ -30,23 +68,3 @@
 
 
 
-class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        nums.sort()
-        ans = set()
-
-        for i, num in enumerate(nums):
-            if i > 0 and num == nums[i - 1] or num > 0: continue 
-
-            target = -nums[i]
-            l, r = i + 1, len(nums) - 1
-            while l < r:
-                value = nums[l] + nums[r]
-                if value == target:
-                    ans.add((num, nums[l], nums[r]))
-                    l += 1
-                elif value > target:
-                    r -= 1
-                else:
-                    l += 1
-        return list(ans)
