@@ -1,34 +1,31 @@
 class Solution:
     def threeSumMulti(self, arr: List[int], target: int) -> int:
-        mod = 10**9 + 7
-        count = Counter(arr)
-        result = 0
-        
-        # Sort the array to handle duplicates more easily
-        unique_vals = sorted(count.keys())
-        
-        for i, num1 in enumerate(unique_vals):
-            count_num1 = count[num1]
-            for j in range(i, len(unique_vals)):
-                num2 = unique_vals[j]
-                num3 = target - num1 - num2
-                
-                if num3 < num2:
-                    continue
-                
-                if num3 in count:
-                    count_num2 = count[num2]
-                    count_num3 = count[num3]
-                    
-                    if num1 == num2 == num3:
-                        result += count_num1 * (count_num1 - 1) * (count_num1 - 2) // 6
-                    elif num1 == num2 != num3:
-                        result += count_num1 * (count_num1 - 1) // 2 * count_num3
-                    elif num1 != num2 == num3:
-                        result += count_num2 * (count_num2 - 1) // 2 * count_num1
-                    elif num1 != num2 and num2 != num3:
-                        result += count_num1 * count_num2 * count_num3
-        
-        return result % mod
+        ret = 0
+        arr.sort()
+        for i in range(len(arr) - 2):
+            curr = arr[i]
+            r = len(arr) - 1
+            l = i + 1
+            while l < r:
+                if curr + arr[l] + arr[r] < target:
+                    l += 1
+                elif curr + arr[l] + arr[r] > target:
+                    r -= 1
+                else:
+                    if arr[l] == arr[r]:
+                        ret += ((r - l + 1) * (r - l))// 2
+                        break
+                    else:
+                        countl = 0
+                        countr = 0
+                        curr_l, curr_r = arr[l], arr[r]
+                        while arr[l] == curr_l:
+                            countl += 1
+                            l += 1
+                        while arr[r] == curr_r:
+                            countr += 1
+                            r -= 1
+                        ret += (countr * countl)
+        return ret % ((10**9) + 7)
 
 
