@@ -1,11 +1,11 @@
 class Solution:
     def threeSumMulti(self, arr: List[int], target: int) -> int:
-        ret = 0
+        ans = 0
         arr.sort()
-        for i in range(len(arr) - 2):
+        n = len(arr)
+        for i in range(n - 2):
             curr = arr[i]
-            r = len(arr) - 1
-            l = i + 1
+            l, r = i+1, n - 1
             while l < r:
                 if curr + arr[l] + arr[r] < target:
                     l += 1
@@ -13,11 +13,10 @@ class Solution:
                     r -= 1
                 else:
                     if arr[l] == arr[r]:
-                        ret += ((r - l + 1) * (r - l))// 2
+                        ans += ((r - l + 1) * (r - l))// 2
                         break
                     else:
-                        countl = 0
-                        countr = 0
+                        countl = countr = 0
                         curr_l, curr_r = arr[l], arr[r]
                         while arr[l] == curr_l:
                             countl += 1
@@ -25,7 +24,7 @@ class Solution:
                         while arr[r] == curr_r:
                             countr += 1
                             r -= 1
-                        ret += (countr * countl)
-        return ret % ((10**9) + 7)
+                        ans += (countr * countl)
+        return ans % ((10**9) + 7)
 
 
