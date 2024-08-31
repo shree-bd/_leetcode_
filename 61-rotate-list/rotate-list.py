@@ -10,13 +10,13 @@ class Solution:
 
         # First, determine the length of the list
         length = 1
-        tail = head
-        while tail.next:
-            tail = tail.next
+        current = head
+        while current.next:
+            current = current.next
             length += 1
 
         # Normalize k to be within the range of the length
-        k %= length
+        k = k%length
         if k == 0:
             return head
 
