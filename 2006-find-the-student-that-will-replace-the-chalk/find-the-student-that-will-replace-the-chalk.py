@@ -9,4 +9,3 @@ class Solution:
                 return i
             k = k-chalk_needed
 
-        # return -1
