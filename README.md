@@ -1,3 +1,3 @@
 # Leetcode Solutions
 
-Tried mostly in Python, you can see some of them solved in Java!
+I mostly solve problems in Python, but you may find some solutions in Java as well!
