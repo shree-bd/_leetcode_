@@ -6,18 +6,19 @@ class Solution:
         max_area = 0
 
         def dfs(r,c):
-            directions = [[0,1],[0,1],[0,-1],[1,0]]
-
             if (r < 0 or r == rows or c < 0 or c == cols or grid[r][c] == 0 or (r,c) in visited):
                 return 0
 
+            # MARK THE CALL ARE VISITED
             visited.add((r,c))
+
+            # RETURN THE AREA OF THE CURRENT ISLAND
             return (1 + dfs(r+1,c) + dfs(r-1,c) + dfs(r,c+1) + dfs(r,c-1))
 
-        area = 0
+ 
         for r in range(rows):
             for c in range(cols):
-                area = max(area, dfs(r,c))
+                max_area = max(max_area, dfs(r,c))
 
-        return area
+        return max_area
         
