@@ -18,7 +18,9 @@ class Solution:
  
         for r in range(rows):
             for c in range(cols):
-                max_area = max(max_area, dfs(r,c))
+                # Only start DFS if the cell is land and hasn't been visited
+                if grid[r][c] == 1 and (r, c) not in visited:
+                    max_area = max(max_area, dfs(r, c))  # Track the maximum area
 
         return max_area
         
