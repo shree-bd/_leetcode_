@@ -8,19 +8,20 @@ class Solution:
 
         directions = [[0,1],[0,-1],[-1,0],[1,0]]
 
-        def dfs(grid, r,c):
+        def dfs(r,c):
             if (0<= r < rows) and (0 <= c < cols) and grid[r][c] == "1":
-                grid[r][c] = '0'
+                # Msrk the current cell as visited
+                grid[r][c] = '2'
 
-                for row_inc, col_inc in directions:
-                    dfs(grid, r + row_inc, c + col_inc)
+                for dr, dc in directions:
+                    dfs(r + dr, c + dc)
 
-
+        # Traverse the grid
         for row in range(rows):
             for col in range(cols):
-                if grid[row][col] == '1':
+                if grid[row][col] == '1':   # Found an island
                     num_islands += 1
-                    dfs(grid, row,col)
+                    dfs(row,col) # Perform DFS to mark the entire island
 
 
         return num_islands
