@@ -10,3 +10,7 @@ class Solution:
             max_sum = max(max_sum, curr_sum)
 
         return max_sum
+
+
+# Time Complexity: O(n)
+# Space Complexity: O(1)
