@@ -7,8 +7,11 @@ class Solution:
             m = (l+r)//2
 
             if nums[m] > nums[m+1]:
-                r = m 
+                r = m           # Possible peak elemnt in leftside
             else:
-                l = m + 1
+                l = m + 1       # Possible peak elemnt in right side
         return l
         
+
+# Time Complexity: O(log N)
+# Space Complexity: O(1)
