@@ -1,15 +1,16 @@
 class Solution:
     def check(self, nums: List[int]) -> bool:
         N = len(nums)
-        count = 1
+        count_breaks = 0
 
-        for i in range(1, 2 * N):
-            if nums[(i-1) % N] <= nums[i % N]:
-                count += 1
+        for i in range(N):
+            if nums[i] > nums[(i+1) % N]:
+                count_breaks += 1
 
-            else:
-                count = 1
-            if count == N:
-                return True
+            if count_breaks > 1:
+                return False
 
-        return N == 1
+        return True
+
+# Time Complexity: O(N)
+# Space Complexity: O(1)
