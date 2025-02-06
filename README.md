@@ -1,3 +1,3 @@
 # Leetcode Solutions
 
-I mostly solve problems in Python, but you may find some solutions in Java as well!
+I primarily solve problems using Python and Java!
