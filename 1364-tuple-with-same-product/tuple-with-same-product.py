@@ -1,13 +1,31 @@
 class Solution:
     def tupleSameProduct(self, nums: List[int]) -> int:
-        final_count = defaultdict(int)
+        # final_count = defaultdict(int)
+        # result = 0
+
+        # n = len(nums)
+        # for i in range(n):
+        #     for j in range(i+1, n):
+        #         product = nums[i] * nums[j]
+        #         result += final_count[product] * 8
+        #         final_count[product] += 1
+
+        # return result
+
+
+        product_count = {}  # Dictionary to store product frequencies
         result = 0
 
-        n = len(nums)
-        for i in range(n):
-            for j in range(i+1, n):
+        # Generate all pairs and calculate their product
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
                 product = nums[i] * nums[j]
-                result += final_count[product] * 8
-                final_count[product] += 1
+                
+                # If the product already exists, calculate the tuples
+                if product in product_count:
+                    result += 8 * product_count[product]  # 8 = 4 permutations * 2 pairs
+                    product_count[product] += 1
+                else:
+                    product_count[product] = 1
 
         return result
