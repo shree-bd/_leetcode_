@@ -5,27 +5,30 @@ class Solution:
             return 0
             
         neigh = collections.defaultdict(list)
-        wordList.append(beginWord)
         for word in wordList:
             for j in range(len(word)):
                 pattern  = word[:j] + "*" + word[j + 1:]
                 neigh[pattern].append(word)
 
+        # BFS 
         visit = set([beginWord])
-        dq = deque([beginWord])    
-        res = 1
+        dq = deque([(beginWord, 1)])    
+
         while dq:
-            for i in range(len(dq)):
-                word = dq.popleft()
-                if word == endWord:
-                    return res
-                for j in range(len(word)):
-                    pattern  = word[:j] + "*" + word[j + 1:]
-                    for neiWord in neigh[pattern]:
-                        if neiWord not in visit:
-                            visit.add(neiWord)
-                            dq.append(neiWord)
-            res += 1
+            word, steps = dq.popleft()
+
+            if word == endWord:
+                return steps
+                
+            for j in range(len(word)):
+                pattern  = word[:j] + "*" + word[j + 1:]
+                    
+                for neiWord in neigh[pattern]:
+                    if neiWord not in visit:
+                        visit.add(neiWord)
+                        dq.append((neiWord, steps + 1))
+                    
+                neigh[pattern] = []
 
         return 0
 
