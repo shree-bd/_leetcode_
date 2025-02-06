@@ -13,7 +13,7 @@ class Solution:
         # return result
 
 
-        product_count = {}  # Dictionary to store product frequencies
+        final_count = {}  # Dictionary to store product frequencies
         result = 0
 
         # Generate all pairs and calculate their product
@@ -22,10 +22,10 @@ class Solution:
                 product = nums[i] * nums[j]
                 
                 # If the product already exists, calculate the tuples
-                if product in product_count:
-                    result += 8 * product_count[product]  # 8 = 4 permutations * 2 pairs
-                    product_count[product] += 1
+                if product in final_count:
+                    result += 8 * final_count[product]  # 8 = 4 permutations * 2 pairs
+                    final_count[product] += 1
                 else:
-                    product_count[product] = 1
+                    final_count[product] = 1
 
         return result
