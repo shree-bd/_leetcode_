@@ -1,39 +1,24 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        # Convert string to list to allow in-place modifications
-        s = list(s.strip())  # Trim leading/trailing spaces
-        
-        # Step 1: Reverse the entire string
-        self.reverse(s, 0, len(s) - 1)
+        stack = []
+        # this ignores multiple s[aces automatically]
+        words = s.split()
+        #push words onto stack
+        for word in words:
+            stack.append(word)
+        #pop words in reversed order
+        return " ".join(stack[::-1])
 
-        # Step 2: Reverse each word
-        n = len(s)
-        start = 0
-        
-        while start < n:
-            if s[start] != " ":
-                end = start
-                while end < n and s[end] != " ":
-                    end += 1
-                self.reverse(s, start, end - 1)
-                start = end
-            start += 1  # Skip spaces
-        
-        # Step 3: Remove extra spaces (handle in-place)
-        return self.clean_spaces(s)
 
-    def reverse(self, s, left, right):
-        """Helper function to reverse a portion of the list"""
-        while left < right:
-            s[left], s[right] = s[right], s[left]
-            left += 1
-            right -= 1
+        # words = s.split()
+        # left, right = 0, len(words) - 1
 
-    def clean_spaces(self, s):
-        """Helper function to remove extra spaces in-place"""
-        i = 0
-        for j in range(len(s)):
-            if s[j] != " " or (i > 0 and s[i - 1] != " "):
-                s[i] = s[j]
-                i += 1
-        return "".join(s[:i])  # Convert list back to string
+        # while left < right:
+        #     words[left], words[right] = words[right], words[left]
+        #     left += 1
+        #     right -= 1
+
+        # return " ".join(words) 
+
+# Time Complexity: O(N)
+# Space Complexity: O(N)
