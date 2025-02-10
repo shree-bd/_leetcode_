@@ -5,11 +5,15 @@ class Solution:
         def isdigit(c):
             return ord("0") <= ord(c) <= ord("9")
 
-        for i in range(len(s)):
-            if isdigit(s[i]):
-                res.pop()
+        for c in s:
+            if isdigit(c):
+                if res:  # Ensure we don't pop from an empty list
+                    res.pop()
             else:
-                res.append(s[i])
-   
+                res.append(c)
+
         return "".join(res)
-         
+
+
+# Time Complexity: O(N)
+# Space Complexity: O(N)
