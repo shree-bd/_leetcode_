@@ -1,18 +1,12 @@
 class Solution:
     def clearDigits(self, s: str) -> str:
-        res = []
-
-        def isdigit(c):
-            return ord("0") <= ord(c) <= ord("9")
-
-        for c in s:
-            if isdigit(c):
-                if res:  # Ensure we don't pop from an empty list
-                    res.pop()
+        stack=[]
+        for i in s:
+            if stack and i.isdigit():
+                stack.pop(-1)
             else:
-                res.append(c)
-
-        return "".join(res)
+                stack.append(i)
+        return "".join(stack)
 
 
 # Time Complexity: O(N)
