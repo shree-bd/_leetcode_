@@ -8,9 +8,15 @@ class Solution:
         # return "".join(stack)
 
 
-        while 1:
-            if part in s:
-                s=s.replace(part, "", 1)
-            else:
-                break
-        return s
+        i, n = 0, len(s)
+        s = list(s)  # Convert to list for efficient modifications
+        part_len = len(part)
+
+        for j in range(n):
+            s[i] = s[j]
+            i += 1
+
+            if i >= part_len and "".join(s[i - part_len:i]) == part:
+                i -= part_len  # Remove `part` by rolling back `i`
+
+        return "".join(s[:i])
