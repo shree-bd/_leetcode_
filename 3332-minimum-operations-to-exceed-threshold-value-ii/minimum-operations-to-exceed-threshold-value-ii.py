@@ -7,7 +7,7 @@ class Solution:
             x = heapq.heappop(nums) # first min num
             y = heapq.heappop(nums) # second min num
 
-            new_val = min(x, y) * 2 + max(x, y)
+            new_val = x * 2 + y
             heapq.heappush(nums, new_val) # push the new value back
 
             res += 1
