@@ -13,3 +13,7 @@ class Solution:
             res += 1
 
         return res
+
+
+# Time Complexity: O(N log N)
+# Space Complexity: O(N)
