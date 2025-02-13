@@ -3,6 +3,10 @@ class Solution:
         heapq.heapify(nums) # convert nums into min-heap           
         res = 0
         
+        # If there are fewer than 2 elements, no operation can be performed
+        if len(nums) < 2:
+            return 0
+        
         while nums[0] < k:
             x = heapq.heappop(nums) # first min num
             y = heapq.heappop(nums) # second min num
