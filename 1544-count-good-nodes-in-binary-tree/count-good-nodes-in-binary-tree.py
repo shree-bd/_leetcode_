@@ -6,17 +6,21 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-
-        def dfs(node, max_value):
+        def dfs(node, max_val):
             if not node:
                 return 0
-
-            res = 1 if node.val >= max_value else 0
-            max_value = max(max_value, node.val)
-            res += dfs(node.left, max_value)
-            res += dfs(node.right, max_value)
-            return res
-
-        return dfs(root, root.val)
-
+            
+            # Check if current node is "good"
+            count = 1 if node.val >= max_val else 0
+            
+            # Update max value seen so far
+            max_val = max(max_val, node.val)
+            
+            # Recur for left and right subtrees
+            count += dfs(node.left, max_val)
+            count += dfs(node.right, max_val)
+            
+            return count
+        
+        return dfs(root, root.val)  # Start DFS with root's value as max_val
         
