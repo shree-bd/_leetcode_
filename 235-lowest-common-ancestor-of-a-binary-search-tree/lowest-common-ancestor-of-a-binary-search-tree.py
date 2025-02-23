@@ -16,4 +16,7 @@ class Solution:
                 curr = curr.left
             else:
                 return curr
-        
+
+
+# Time Complexity: O(log N)
+# Space Complexity: O(1)
