@@ -8,17 +8,13 @@
 class Codec:
 
     def serialize(self, root):
-        res = []
-
+        # Helper function to perform preorder DFS traversal
         def dfs(node):
             if not node:
-                res.append("N")
-                return
-            res.append(str(node.val))
-            dfs(node.left)
-            dfs(node.right)
-        dfs(root )
-        return ",".join(res)
+                return ["N"]
+            return [str(node.val)] + dfs(node.left) + dfs(node.right)
+
+        return ",".join(dfs(root))  # Join the list into a comma-separated string
                  
 
     def deserialize(self, data):
