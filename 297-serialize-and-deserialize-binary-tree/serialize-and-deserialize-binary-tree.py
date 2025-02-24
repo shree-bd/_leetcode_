@@ -18,20 +18,18 @@ class Codec:
                  
 
     def deserialize(self, data):
-        values = data.split(",")
-        self.i = 0
-
-        def dfs():
-            if values[self.i] == "N":
-                self.i += 1
-                return None
-            node = TreeNode(int(values[self.i]))
-            self.i += 1
-            node.left = dfs()
-            node.right = dfs()
-            return node
-        return dfs()
-
+        values = data.split(",")  # Split the serialized string into a list
+        # Helper function for deserialization using index
+        def dfs(index):
+            if values[index] == "N":
+                return None, index + 1
+            node = TreeNode(int(values[index]))
+            node.left, index = dfs(index + 1)  # Deserialize left child
+            node.right, index = dfs(index)     # Deserialize right child
+            return node, index
+        
+        root, _ = dfs(0)  # Start from the first element and return the root
+        return root
 
 
         """Decodes your encoded data to tree.
