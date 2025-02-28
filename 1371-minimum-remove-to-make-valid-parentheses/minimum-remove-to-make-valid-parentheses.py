@@ -2,7 +2,7 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         res = []
         cnt = 0
-
+        # First pass: Remove extra closing parentheses ')'
         for c in s:
             if c == "(":
                 res.append(c)
@@ -13,10 +13,11 @@ class Solution:
             elif c!= ")":
                 res.append(c)
 
+        # Second pass: Remove extra opening parentheses '('
         filtered = []
         for c in res[::-1]:
             if c == "(" and cnt > 0:
-                cnt -= 1
+                cnt -= 1  # Skip this extra '('
             else:
                 filtered.append(c)
 
