@@ -8,18 +8,19 @@ class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         self.res = 0
 
-        # returns height
-        def dfs(curr):
-            if not curr:
+        def dfs(node):
+            if not node:
                 return 0
 
-            left = dfs(curr.left)
-            right = dfs(curr.right)
+            left = dfs(node.left)
+            right = dfs(node.right)
 
-            self.res = max(self.res, left + right)
+            self.res = max(self.res, left+right)
+
             return 1 + max(left, right)
 
         dfs(root)
         return self.res
 
-        
+# Time Complexity: O(N)
+# Space Complexity: O(H)
