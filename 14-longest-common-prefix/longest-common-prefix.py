@@ -3,15 +3,41 @@ class Solution:
         if not strs:
             return ""
 
-        prefix = strs[0]  # Start with the first word as the prefix
+        strs.sort()
+        first, last = strs[0], strs[-1]
+        i = 0
 
-        for word in strs[1:]:  # Compare with all other words
-            while not word.startswith(prefix):  # Keep reducing prefix until match
-                prefix = prefix[:-1]  # Remove last character
-                if not prefix:
-                    return ""  # If prefix becomes empty, return ""
+        while i < len(first) and i<len(last) and first[i] == last[i]:
+            i += 1
+        return first[:i]
 
-        return prefix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # if not strs:
+        #     return ""
+
+        # prefix = strs[0]  # Start with the first word as the prefix
+
+        # for word in strs[1:]:  # Compare with all other words
+        #     while not word.startswith(prefix):  # Keep reducing prefix until match
+        #         prefix = prefix[:-1]  # Remove last character
+        #         if not prefix:
+        #             return ""  # If prefix becomes empty, return ""
+
+        # return prefix
 
 
 
