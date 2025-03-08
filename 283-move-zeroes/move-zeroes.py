@@ -9,12 +9,14 @@ class Solution:
 
         # leave zero as where they are, just shift non zero to the left by traversing right pointer
 
-        l = 0
-        for r in range(len(nums)):
-            if nums[r] != 0:
-                nums[r], nums[l] = nums[l], nums[r]
-                l += 1
+        left = 0
+        for right in range(len(nums)):
+            if nums[right] != 0:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
         return nums
 
 
+# Time Complexity: O(N)
+# Space Complexity: O(1)
         
