@@ -9,13 +9,11 @@ class Solution:
             return head
 
         #split the list into two halfs
-        left = head
-        right = self.getMid(head)
-        tmp = right.next
-        right.next = None
-        right = tmp
+        mid = self.getMid(head)
+        right = mid.next
+        mid.next = None # break the list into two halves
 
-        left = self.sortList(left)
+        left = self.sortList(head)
         right = self.sortList(right)
 
         return self.mergeSort(left, right)
@@ -37,8 +35,8 @@ class Solution:
             else:
                 tail.next = l2
                 l2 = l2.next
-            tail = tail.next
-
+            tail = tail.next # move tail forward
+ 
             tail.next = l1 if l1 else l2
         return dummy.next
 
