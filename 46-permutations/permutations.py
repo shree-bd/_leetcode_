@@ -8,12 +8,13 @@ class Solution:
 
             for i in range(start, len(nums)):
                 nums[start], nums[i] = nums[i], nums[start]  #swap
-                backtrack(start+1)
-                nums[start], nums[i] = nums[i], nums[start]
+                backtrack(start+1)  #reursion for next index
+                nums[start], nums[i] = nums[i], nums[start] #undo swap
 
         backtrack(0)
         return result
 
-
+# Time Complexity: O(n!)
+# Space Complexity: O(n * n!)
         
         
