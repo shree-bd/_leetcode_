@@ -2,8 +2,8 @@ class Solution:
     def partition(self, s: str) -> List[List[str]]:
         result = []
 
-        def isPalindrome(substring):
-            return substring == substring[::-1]
+        def isPalindrome(s):
+            return s == s[::-1]
             
         def backtrack(start, path):
             if start == len(s):
