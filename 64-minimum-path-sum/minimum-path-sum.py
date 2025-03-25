@@ -9,4 +9,5 @@ class Solution:
                 res[r][c] = grid[r][c] + min(res[r+1][c], res[r][c+1])
         return res[0][0]
 
-        
+# Time Complexity: O(M*N)
+# Space Complexity: O(1)
