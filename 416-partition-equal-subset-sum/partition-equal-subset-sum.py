@@ -2,27 +2,23 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         total_sum = sum(nums)
-        
-        # If the total sum is odd, we can't split it into two equal subsets
         if total_sum % 2 != 0:
             return False
-        
-        # We need to find a subset with sum equal to total_sum / 2
         target = total_sum // 2
         
         # DP array where dp[i] means whether sum i can be achieved
         dp = [False] * (target + 1)
-        dp[0] = True  # We can always make sum 0 with no elements
+        dp[0] = True  # base case: sum 0 is always possible
         
         for num in nums:
-            # Traverse backwards to avoid overwriting dp values
+            # Traverse right toleft to avoid overwriting dp values
             for i in range(target, num - 1, -1):
-                dp[i] = dp[i] or dp[i - num]
-        
-        # If we can achieve target sum, return True
-        return dp[target]
+                dp[i] = dp[i] or dp[i - num] #include current num
 
+        return dp[target]         # If we can achieve target sum, return True
 
+# Time Complexity: O(M*N)
+# Space Complexity: O(N)
 
 
 
