@@ -18,7 +18,8 @@ class Solution:
                 ord('a') <= ord(c) <= ord('z') or
                 ord('0') <= ord(c) <= ord('9'))
 
-
+# Time Complexity: O(N)
+# Space Complexity: O(1)
 
 
 #  Using built in function
