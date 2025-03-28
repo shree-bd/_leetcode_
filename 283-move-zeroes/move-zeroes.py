@@ -9,11 +9,20 @@ class Solution:
 
         # leave zero as where they are, just shift non zero to the left by traversing right pointer
 
-        left = 0
-        for right in range(len(nums)):
-            if nums[right] != 0:
-                nums[left], nums[right] = nums[right], nums[left]
-                left += 1
+        # left = 0
+        # for right in range(len(nums)):
+        #     if nums[right] != 0:
+        #         nums[left], nums[right] = nums[right], nums[left]
+        #         left += 1
+        # return nums
+
+
+
+        l = 0
+        for r in range(len(nums)):
+            if nums[r] != 0:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
         return nums
 
 
