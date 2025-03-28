@@ -1,18 +1,21 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
+        def isPalindrome(l, r):
+            while l < r:
+                if s[l] != s[r]:
+                    return False
+                l, r = l + 1, r - 1
+            return True
 
-        def is_palindrome_range(i, j):
-            """Helper function to check if s[i:j+1] is a palindrome."""
-            return all(s[k] == s[j - k + i] for k in range(i, j))
+        left, right = 0, len(s) - 1
+
+        while left < right:
+            if s[left] != s[right]:
+                return isPalindrome(left + 1, right) or isPalindrome(left, right-1)
+            left, right = left + 1, right - 1
+        return True
+
+            
+
+
         
-        # Two pointers approach
-        i, j = 0, len(s) - 1
-        
-        while i < j:
-            if s[i] != s[j]:
-                # If s[i] != s[j], try skipping one character either from the left or right
-                return is_palindrome_range(i + 1, j) or is_palindrome_range(i, j - 1)
-            i += 1
-            j -= 1
-        
-        return True  # If no mismatches, it's a palindrome
