@@ -1,16 +1,30 @@
 class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
-        left, right = 0, len(arr)
+        arr_set = set(arr)
+        missing = []
+        num = 1
 
-        while left < right:
-            mid = (left+right)//2
-            missing = arr[mid] - (mid+1)
-            if missing < k:
-                left = mid + 1
-            else:
-                right = mid
+        while len(missing) < k:
+            if num not in arr_set:
+                missing.append(num)
+            num += 1
+        return missing[-1]
 
-        return left + k
+
+
+
+
+        # left, right = 0, len(arr)
+
+        # while left < right:
+        #     mid = (left+right)//2
+        #     missing = arr[mid] - (mid+1)
+        #     if missing < k:
+        #         left = mid + 1
+        #     else:
+        #         right = mid
+
+        # return left + k
 
 # Time Complexity: O(N log N)
 # Space  Complexity: O()
