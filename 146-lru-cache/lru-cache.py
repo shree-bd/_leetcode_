@@ -56,44 +56,21 @@ from collections import OrderedDict
 
 class LRUCache:
     def __init__(self, capacity: int):
-        self.hashMap = OrderedDict()
-        self.capacity = capacity
+        self.cache = OrderedDict()
+        self.cap = capacity
+
 
     def get(self, key: int) -> int:
-        if key in self.hashMap:
-            self.hashMap.move_to_end(key)
-            return self.hashMap[key]
-        else:
-            return -1
+        if key in self.cache:
+            self.cache.move_to_end(key)
+            return self.cache[key]
+        return -1
+
 
     def put(self, key: int, value: int) -> None:
-        if key in self.hashMap:
-            self.hashMap.move_to_end(key)
-        elif len(self.hashMap) >= self.capacity:
-            self.hashMap.popitem(last=False)
-        self.hashMap[key] = value
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        elif len(self.cache) >= self.cap:
+            self.cache.popitem(last=False)
 
-
-
-
-
-
-    # def __init__(self, capacity: int):
-    #     self.cache = OrderedDict()
-    #     self.cap = capacity
-
-
-    # def get(self, key: int) -> int:
-    #     if key in self.cache:
-    #         self.cache.move_to_end(key)
-    #         return self.cache[key]
-    #     return -1
-
-
-    # def put(self, key: int, value: int) -> None:
-    #     if key in self.cache:
-    #         self.cache.move_to_end(key)
-    #     elif len(self.cache) >= self.cap:
-    #         self.cache.popitem(last=False)
-
-    #     self.cache[key] = value
+        self.cache[key] = value
