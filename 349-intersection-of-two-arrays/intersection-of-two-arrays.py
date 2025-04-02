@@ -3,7 +3,7 @@ class Solution:
         nums1_set = set(nums1)
         nums2_set = set(nums2)
 
-        intersection = nums1_set.intersection(nums2_set)
-
-        return list(intersection)
+        return list(nums1_set & nums2_set)
         
+# Time Complexity: O(M+N)
+# Space Complexity: O(M+N)
