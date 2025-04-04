@@ -1,20 +1,17 @@
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        N = n
-        if N < 0:
-            x  = 1/x
-            N = -N
+        if n == 0:
+            return 1
+        neg = n <0
+        n = abs(n)
 
         result = 1.0
-        curr_product = x
-
-        while N>0:
-            if N%2==1:
-                result *= curr_product
-            curr_product *= curr_product
-            N //= 2
-
-        return result
+        while n:
+            if n%2==1:
+                result *= x
+            x *= x
+            n//=2
+        return 1/result if neg else result
 
         
 # Time Complexity: O(log N)
