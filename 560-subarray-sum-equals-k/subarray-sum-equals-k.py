@@ -1,37 +1,15 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        count = 0
-        curr_sum = 0
-        prefix_sums = defaultdict(int)  
-        prefix_sums[0] = 1  
+        prefix_sum = 0
+        cnt = 0
+        hash_map = {0:1}
 
         for num in nums:
-            curr_sum += num  
-            count += prefix_sums[curr_sum - k]  # No need for explicit check
-            prefix_sums[curr_sum] += 1  
-
-        return count
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            prefix_sum += num
+            diff = prefix_sum - k
+            cnt += hash_map.get(diff, 0)
+            hash_map[prefix_sum] = hash_map.get(prefix_sum, 0) + 1
+        return cnt
 
 
 
