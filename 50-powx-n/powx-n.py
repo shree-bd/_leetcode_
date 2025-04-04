@@ -1,6 +1,5 @@
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-
         N = n
         if N < 0:
             x  = 1/x
@@ -18,7 +17,8 @@ class Solution:
         return result
 
         
-
+# Time Complexity: O(log N)
+# Space Complexity: O(1)
 
 
 
