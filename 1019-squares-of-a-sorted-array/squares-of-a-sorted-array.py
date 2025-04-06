@@ -13,5 +13,7 @@ class Solution:
         
         return res[::-1]
 
+# Time Complexity: O(N)
+# Space Complesiuty: O(N)
 
         
