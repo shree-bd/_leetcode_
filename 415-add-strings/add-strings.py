@@ -6,7 +6,7 @@ class Solution:
         carry = 0
         res = []
 
-        while i >= 0 or j >= 0:
+        while i >= 0 or j >= 0 or carry:
             cur_i = int(num1[i]) if i >= 0 else 0
             cur_j = int(num2[j]) if j >= 0 else 0
 
@@ -18,8 +18,8 @@ class Solution:
 
             i, j = i - 1, j - 1
 
-        if carry:
-            res.append(str(carry))
+        # if carry:
+        #     res.append(str(carry))
 
         return "".join(reversed(res))
 
