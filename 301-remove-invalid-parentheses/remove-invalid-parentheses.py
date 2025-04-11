@@ -45,3 +45,5 @@ class Solution:
                     right += 1
         return left, right
         
+# TIME COMPLEXITY : O(2^N) ## (each brace has 2 options: exits or to be removed)
+# SPACE COMPLEXITY : O(N) ##
