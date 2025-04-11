@@ -1,7 +1,7 @@
 class Solution:
     def toGoatLatin(self, sentence: str) -> str:
         words = sentence.split()
-        vowels = ["a", "e", "i", "o", "u", "A", "E","I","O","U"]
+        vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
         res = []
 
         for i in range(len(words)):
@@ -16,5 +16,5 @@ class Solution:
         return " ".join(res)
 
             
-# Time Complexity: O()
-# Space Complexity: O()
+# Time Complexity: O(N)
+# Space Complexity: O(N)
