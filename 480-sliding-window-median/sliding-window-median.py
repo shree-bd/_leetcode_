@@ -20,5 +20,17 @@ class Solution:
 
         return result
         
+# Time Complexity: O(N log K) | Space Complexity: O(K)
+# N= no of elemtns in nums | K = window size
+
+
+"""
+class Solution:
+    def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
+
+
+
+
 # Time Complexity: O(N * K log K) | Space Complexity: O(K)
 # N= no of elemtns in nums | K = window size
+"""
