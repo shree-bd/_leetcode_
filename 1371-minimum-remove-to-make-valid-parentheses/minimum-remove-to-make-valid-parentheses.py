@@ -1,8 +1,13 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        res = []
+        """
+        two pass
+        two stack: one to store open bracces
+        secind to remove the closed ones
+        """
+        res =[]
         cnt = 0
-        # First pass: Remove extra closing parentheses ')'
+
         for c in s:
             if c == "(":
                 res.append(c)
@@ -13,18 +18,12 @@ class Solution:
             elif c!= ")":
                 res.append(c)
 
-        # Second pass: Remove extra opening parentheses '('
         filtered = []
         for c in res[::-1]:
             if c == "(" and cnt > 0:
-                cnt -= 1  # Skip this extra '('
+                cnt -= 1
             else:
                 filtered.append(c)
-
         return "".join(filtered[::-1])
 
-
-# Time Complexity: O(N)
-# Space Complxity: O(N)
-
-         
+        
