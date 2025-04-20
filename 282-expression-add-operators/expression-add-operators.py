@@ -13,14 +13,14 @@ class Solution:
                     break
 
                 curr_str = num[idx:i+1]
-                curr = int(curr_str)
+                curr_num = int(curr_str)
 
                 if idx == 0:
-                    backtrack(i+1, curr_str, curr, curr)
+                    backtrack(i+1, curr_str, curr_num, curr_num)
                 else:
-                    backtrack(i+1, path + "+" + curr_str, value + curr, curr)
-                    backtrack(i+1, path + "-" + curr_str, value - curr, -curr)
-                    backtrack(i+1, path + "*" + curr_str, value - prev + (prev * curr), prev * curr)
+                    backtrack(i+1, path + "+" + curr_str, value + curr_num, curr_num)
+                    backtrack(i+1, path + "-" + curr_str, value - curr_num, -curr_num)
+                    backtrack(i+1, path + "*" + curr_str, value - prev + (prev * curr_num), prev * curr_num)
 
         backtrack(0, "", 0, 0)
         return res
