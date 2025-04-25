@@ -1,12 +1,29 @@
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        min_heap = []
+        k = len(nums) - k  # Find kth largest by finding (n-k)th smallest
 
-        for num in nums:
-            heapq.heappush(min_heap, num)
-            if len(min_heap) > k:
-                heapq.heappop(min_heap)
+        def quickselect(left, right):
+            pivot = nums[random.randint(left, right)]
+            l, r = left, right
 
-        return min_heap[0]
+            while l <= r:
+                if nums[l] < pivot:
+                    l += 1
+                elif nums[r] > pivot:
+                    r -= 1
+                else:
+                    nums[l], nums[r] = nums[r], nums[l]
+                    l += 1
+                    r -= 1
+
+            if k <= r:
+                return quickselect(left, r)
+            if k >= l:
+                return quickselect(l, right)
+            return nums[k]
+
+        return quickselect(0, len(nums) - 1)
+        
+
 
         
