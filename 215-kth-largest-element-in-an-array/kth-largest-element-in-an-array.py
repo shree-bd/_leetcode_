@@ -1,5 +1,37 @@
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
+        k = len(nums) - k
+
+        def quickselect(left, right):
+            pivot = nums[right]
+
+            l, r = left, right
+
+            while l<=r:
+                if nums[l] < pivot:
+                    l += 1
+                elif nums[r] > pivot:
+                    r -= 1
+                else:
+                    nums[l], nums[r] = nums[r], nums[l]
+                    l, r = l + 1, r - 1
+
+            if k <= r:
+                return quickselect(left, r)
+            if k >= l:
+                return quickselect(l, right)
+            return nums[k]
+
+        return quickselect(0, len(nums)-1)
+
+            
+             
+
+
+
+
+
+        """
         min_heap = []
 
         for num in nums:
@@ -9,6 +41,7 @@ class Solution:
                 heapq.heappop(min_heap)
 
         return min_heap[0]
+        """
 
 
 
