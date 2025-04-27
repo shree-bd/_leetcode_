@@ -3,43 +3,17 @@ class Solution:
         if not intervals:
             return []
 
-        # Sort intevals based on the start times
-        intervals.sort(key = lambda i : i[0])
-        result = [intervals[0]]  # Initialize with the first interval
+        intervals.sort(key = lambda x : x[0])
+        result = [intervals[0]]
 
         for start, end in intervals[1:]:
-            lastEnd = result[-1][1]
+            last_end = result[-1][1]
 
-            if start <= lastEnd:
-                result[-1][1] = max(lastEnd, end)
+            if start <= last_end:
+                result[-1][1] = max(last_end, end)
             else:
                 result.append([start, end])
 
         return result
 
-
-            # [1,5], [2,4] = [1,5]
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
