@@ -24,3 +24,5 @@ class Solution:
 
         dfs(root, True)
         return res
+
+# T.C: O(N) | SC.: O(N)
