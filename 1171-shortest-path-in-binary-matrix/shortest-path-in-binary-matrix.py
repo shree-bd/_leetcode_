@@ -1,24 +1,23 @@
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        N = len(grid)
-        queue = collections.deque([(0,0,1)]) # row,column, distance
-        visited = {(0,0)}
-        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-
-        if grid[0][0] == 1 or grid[N-1][N-1] == 1:
+        n = len(grid)
+        if grid[0][0] != 0 or grid[n-1][n-1] != 0:
             return -1
+
+        directions = [(-1,0), (1,0), (0,-1), (0,1), (-1,-1), (-1,1), (1,-1), (1,1)]
+        queue = deque([(0, 0, 1)])  # (row, col, path_length)
+        visited = set((0,0))
+
         while queue:
-            r, c, dist = queue.popleft()
-            if r == N-1 and c == N-1:
-                return dist
+            r, c, length = queue.popleft()
+
+            if (r, c) == (n-1, n-1):
+                return length
 
             for dr, dc in directions:
-                nr, nc = r+dr, c+dc
-                if 0 <= nr < N and 0 <= nc < N and grid[nr][nc] == 0 and (nr, nc) not in visited:
-                    queue.append((nr,nc,dist+1))
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < n and 0 <= nc < n and grid[nr][nc] == 0 and (nr,nc) not in visited:
                     visited.add((nr,nc))
-        return -1 # no path found
+                    queue.append((nr, nc, length+1))
 
-
-# Time Complexity:  O(N^2)  (In the worst case, we traverse all N×N cells)
-# Space Complexity:  O(N^2)  (In the worst case, all cells are stored in the queue).
+        return -1
