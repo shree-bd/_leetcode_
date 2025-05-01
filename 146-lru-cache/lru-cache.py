@@ -8,36 +8,11 @@ class LRUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.cache = {}
-        self.head = self.tail = ListNode(-1,-1)
-        self.head.next = self.tail
-        self.tail.prev = self.head
-        
+        self.left = ListNode(0,0)
+        self.right = ListNode(0,0)
 
-    def get(self, key: int) -> int:
-        if key not in self.cache:
-            return -1
-        
-        node = self.cache[key]
-
-        self._remove(node)
-        self._add(node)
-
-        return node.val
-        
-
-    def put(self, key: int, value: int) -> None:
-        if key in self.cache:
-            old_node = self.cache[key]
-            self._remove(old_node)
-
-        new_node = ListNode(key, value)
-        self.cache[key] = new_node
-        self._add(new_node)
-
-        if len(self.cache) > self.capacity:
-            lru = self.head.next
-            self._remove(lru)
-            del self.cache[lru.key]
+        self.left.next = self.right
+        self.right.prev = self.left
     
     def _remove(self,node):
         prev, nxt = node.prev, node.next
@@ -45,12 +20,32 @@ class LRUCache:
         nxt.prev = prev
 
     def _add(self,node):
-        prev_end = self.tail.prev
-        prev_end.next = node 
-        node.prev = prev_end
-        node.next = self.tail
-        self.tail.prev = node
+        prev, nxt = self.right.prev, self.right
+        prev.next = node
+        node.prev = prev
+        node.next = nxt
+        nxt.prev = node
         
+    def get(self, key: int) -> int:
+        if key in self.cache:
+            node = self.cache[key]
+            self._remove(node)
+            self._add(node)
+            return node.val
+        return -1
+        
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            self._remove(self.cache[key])
+        self.cache[key] = ListNode(key, value)
+        self._add(self.cache[key])
+
+        if len(self.cache) > self.capacity:
+            # remove from list and delete from hashmap
+            lru = self.left.next
+            self._remove(lru)
+            del self.cache[lru.key]
+
 
 
 # Your LRUCache object will be instantiated and called as such:
