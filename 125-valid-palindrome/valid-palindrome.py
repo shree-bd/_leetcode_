@@ -1,7 +1,9 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         def is_alpha(c):
-            return c.isalnum()
+            return (ord('A') <= ord(c) <= ord('Z') or
+                    ord('a') <= ord(c) <= ord('z') or
+                    ord('0') <= ord(c) <= ord('9'))
 
         left, right = 0, len(s)-1
 
