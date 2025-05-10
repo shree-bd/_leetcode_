@@ -7,11 +7,10 @@ class Solution:
 
         visited = set()
         def has_cycle(course):
-            if course in visited:
-                return False #cycle detected            
-            if not pre_map[course]:
-                return True # already processed or no prereqs
-
+            if course in visited: return False #cycle detected      
+                      
+            if not pre_map[course]: return True # already processed or no prereqs
+                
             visited.add(course)
             for prereq in pre_map[course]:
                 if not has_cycle(prereq): 
