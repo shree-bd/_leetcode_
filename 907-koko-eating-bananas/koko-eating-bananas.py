@@ -1,3 +1,12 @@
+"""
+LeetCode Problem: 907 Koko Eating Bananas
+"""
+
+from typing import List
+"""
+LeetCode Problem: 907 Koko Eating Bananas
+"""
+
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         piles.sort()

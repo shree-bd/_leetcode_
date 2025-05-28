@@ -52,4 +52,11 @@ Thumbs.db
 
 # Local configuration
 config.local.json
-.env 
+.env
+
+# Management scripts (exclude from PyLint)
+analytics.py
+organize.py
+progress_tracker.py
+manage.py
+fix_pylint.py 

@@ -1,3 +1,12 @@
+"""
+LeetCode Problem: 2581 Divide Players Into Teams Of Equal Skill
+"""
+
+from typing import List
+"""
+LeetCode Problem: 2581 Divide Players Into Teams Of Equal Skill
+"""
+
 # class Solution:
 #     def dividePlayers(self, skill: List[int]) -> int:
 #         skill.sort()

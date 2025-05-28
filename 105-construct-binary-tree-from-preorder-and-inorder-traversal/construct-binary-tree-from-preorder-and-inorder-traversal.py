@@ -1,9 +1,18 @@
+"""
+LeetCode Problem: 105 Construct Binary Tree From Preorder And Inorder Traversal
+"""
+
+from typing import List
+"""
+LeetCode Problem: 105 Construct Binary Tree From Preorder And Inorder Traversal
+"""
+
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
 
