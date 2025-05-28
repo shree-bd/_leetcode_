@@ -1,0 +1,61 @@
+{
+  "entries": [
+    {
+      "date": "2025-05-27",
+      "total_problems": 168,
+      "difficulty_distribution": {
+        "Easy": 77,
+        "Hard": 10,
+        "Medium": 81
+      },
+      "category_distribution": {
+        "Trees": 25,
+        "Linked Lists": 12,
+        "Other": 60,
+        "Hash Table": 10,
+        "Arrays": 25,
+        "Strings": 21,
+        "Database/SQL": 6,
+        "Stack/Queue": 4,
+        "Graphs": 4,
+        "Dynamic Programming": 1
+      },
+      "language_distribution": {
+        "Python": 148,
+        "Java": 2
+      }
+    }
+  ],
+  "milestones": [
+    {
+      "count": 10,
+      "date": "2025-05-27",
+      "achieved": true
+    },
+    {
+      "count": 25,
+      "date": "2025-05-27",
+      "achieved": true
+    },
+    {
+      "count": 50,
+      "date": "2025-05-27",
+      "achieved": true
+    },
+    {
+      "count": 75,
+      "date": "2025-05-27",
+      "achieved": true
+    },
+    {
+      "count": 100,
+      "date": "2025-05-27",
+      "achieved": true
+    },
+    {
+      "count": 150,
+      "date": "2025-05-27",
+      "achieved": true
+    }
+  ]
+}
