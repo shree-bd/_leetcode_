@@ -1,22 +1,20 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
+
+        parts = path.split("/")
+
         stack = []
-        curr = ""
 
-
-        for c in path + "/":
-            if c == "/":                        # Slash marks the end of a directory name
-                if curr =="..":                 # Handle 'go to parent directory'
-                    if stack: stack.pop()
-                elif curr != "" and curr != ".":
-                    stack.append(curr)
-                # Reset the current directory name for the next one
-                curr = ""
+        for c in parts:
+            if c == "." or c == "":
+                continue
+            elif c == "..":
+                if stack:
+                    stack.pop()
             else:
-                # Build the current directory name character by character
-                curr += c
+                stack.append(c)
 
         return "/" + "/".join(stack)
 
-             
+
         

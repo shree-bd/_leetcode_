@@ -1,26 +1,38 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-
-        def binSearch(isLeft):
-            l, r = 0, len(nums)-1
-            i = -1
-
-            while l <= r:
-                m = (l + r) // 2
-                if target > nums[m]:
-                    l = m + 1
-                elif target < nums[m]:
-                    r = m - 1
-                else:
-                    i = m             # Update Position
-                    if isLeft:
-                        r = m - 1 # Move left for first occurrence
+        def find_bound(first_num):
+            left, right = 0, len(nums)-1
+            bound = -1
+            while left <= right:
+                mid = (left + right) // 2
+                if nums[mid] == target:
+                    bound = mid
+                    if first_num:
+                        right = mid - 1
                     else:
-                        l = m + 1  # Move right for last occurrence
+                        left = mid + 1
+                elif nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return bound
 
-            return i
+        return [find_bound(True), find_bound(False)]
 
-        left = binSearch(isLeft = True)
-        right = binSearch(isLeft = False)
 
-        return [left, right]
+
+
+
+
+
+
+        """
+        first = last = -1
+        for i in range(len(nums)):
+            if nums[i] == target:
+                if first == -1:
+                    first = i
+                last = i
+        return [first, last]
+        """
+        

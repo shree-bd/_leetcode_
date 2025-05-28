@@ -5,12 +5,12 @@ class Solution:
 
         rows, cols = len(mat), len(mat[0])
         res = []
-        r, c, direction = 0, 0, 1
+        r, c, direction = 0, 0, 1 #(up-right)
 
         for _ in range(rows*cols):
             res.append(mat[r][c])
 
-            if direction ==1:
+            if direction ==1: #moving up right
                 if c == cols-1:
                     r += 1
                     direction = -1
@@ -20,7 +20,7 @@ class Solution:
                 else:
                     r -= 1
                     c += 1
-            else:
+            else: #moving downleft
                 if r == rows - 1:
                     c += 1
                     direction = 1
@@ -32,5 +32,3 @@ class Solution:
                     c -= 1
                 
         return res
-
-        

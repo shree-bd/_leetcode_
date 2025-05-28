@@ -1,9 +1,15 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        countMap = Counter(nums)
-        
-        # Step 2: Use a heap to find the top k frequent elements
-        # We use a min-heap to keep track of the top k elements
-        # heapq.nlargest returns the k largest elements based on the frequency count
-        return [item for item, freq in heapq.nlargest(k, countMap.items(), key=lambda x: x[1])]
+        count = Counter(nums)
+        freq_buckets = [[] for _ in range(len(nums) + 1)]
 
+        for num, freq in count.items():
+            freq_buckets[freq].append(num)
+
+        res = []
+        for i in range(len(freq_buckets) - 1, 0, -1):
+            for num in freq_buckets[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+        
