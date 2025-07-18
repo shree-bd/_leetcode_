@@ -1,7 +1,8 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = []
+        n = len(nums)
         nums.sort()
+        res = []
 
         for i, a in enumerate(nums):
             if i > 0 and a == nums[i-1]:
@@ -24,3 +25,5 @@ class Solution:
 
 
 # T.C: O(N^2) | S.C : O(N)
+
+        
