@@ -5,7 +5,7 @@ class Solution:
 
         for ch in s:
             if stack and abs(ord(stack[-1]) - ord(ch)) == 32:
-                stack.pop()
+                stack.pop() # remove the bad pair
             else:
                 stack.append(ch)
         return "".join(stack)
