@@ -4,22 +4,22 @@ class Solution:
         max_len = 0
         n = len(s)
 
+        def expand(l, r):
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                l -= 1
+                r += 1
+            return s[l+1:r]  # s[l] != s[r] now, so return previous window
+
         for i in range(n):
-            l, r = i, i
-            while l >= 0 and r < n and s[l] == s[r]:
-                if (r-l+1) > max_len:
-                    res = s[l:r+1]
-                    max_len = r - l + 1
-                l, r = l -1, r + 1
-
-            #even lenght
-            l, r = i, i + 1
-            while l >= 0 and r < n and s[l] == s[r]:
-                if (r-l+1) > max_len:
-                    res = s[l:r+1]
-                    max_len = (r-l+1)
-                l, r = l - 1, r + 1
-
+            p1 = expand(i,i)
+            p2 = expand(i, i+1)
+            # update longest
+            res = max(p1,p2,res, key =len)
+            
         return res
+
+
+
+
 
  
