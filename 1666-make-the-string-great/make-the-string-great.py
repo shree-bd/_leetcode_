@@ -1,5 +1,6 @@
 class Solution:
     def makeGood(self, s: str) -> str:
+        s = list(s)
         stack = []
 
         for ch in s:
