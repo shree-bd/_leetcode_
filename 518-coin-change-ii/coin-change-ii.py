@@ -8,6 +8,8 @@ class Solution:
                 dp[x] += dp[x - coin]
         return dp[amount]
 
+# TC: O(N * amount) | S.C: O(amount)
+
         """
         dp = [[0] * (len(coins) + 1) for i in range(amount+1)]
         dp[0] = [1] * (len(coins) + 1)
